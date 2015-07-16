@@ -1,10 +1,10 @@
-[
-	'open-uri',
-	'openssl',
-	'json'
-].each{|g|
-	require g
-}
+# [
+# 	'open-uri',
+# 	'openssl',
+# 	'json'
+# ].each{|g|
+# 	require g
+# }
 
 class GSheet
 	def sheetId= sheetId

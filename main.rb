@@ -1,6 +1,7 @@
 [
 	'sinatra',
 	'open-uri',
+	'openssl',
 	'json'
 ].each{|g|
 	require g
@@ -15,7 +16,8 @@ end
 get '/jobs' do 
 	returnArray = []
 	newGSheet = GSheet.new
-	newGSheet.sheetId = ENV['JOBS_GSHEET_ID']
+	# newGSheet.sheetId = ENV['JOBS_GSHEET_ID']
+	newGSheet.sheetId = '1kDpKG0XhlbM679tfZe3pWtxmvnAIM_NZY7aNU5jFlBg'
 	jobListingDataArray = newGSheet.showData
 	jobListingDataArray.each{|jobData|
 		g = 'gsx$'
