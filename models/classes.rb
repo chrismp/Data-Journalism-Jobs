@@ -1,8 +1,7 @@
 [
 	'open-uri',
 	'openssl',
-	'json',
-	'pp'
+	'json'
 ].each{|g|
 	require g
 }
