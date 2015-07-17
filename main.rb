@@ -18,12 +18,12 @@ get '/jobs' do
 	newGSheet = GSheet.new
 	newGSheet.sheetId = ENV['JOBS_GSHEET_ID']
 	jobListingDataArray = newGSheet.showData
-	# return jobListingDataArray.to_json
+
 	jobListingDataArray.each{|jobData|
 		g = 'gsx$'
 		t = '$t'
-		
-		if(jobData[g+'closed'][t].to_i===1 && jobData[g+'approved'][t].to_i!=1)
+
+		if(jobData[g+'closed'][t].to_i!=0 || jobData[g+'approved'][t].to_i!=1)
 			next
 		end
 
