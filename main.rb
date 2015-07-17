@@ -49,3 +49,7 @@ get '/jobs' do
 	returnJSON = returnArray.to_json
 	return returnJSON
 end
+
+get '/submit' do 
+	redirect 'https://docs.google.com/forms/d/127JNB-_U7PvMSXs5R0PhiVffFNdqhvlHixNgmbsMWmY/viewform'
+end
