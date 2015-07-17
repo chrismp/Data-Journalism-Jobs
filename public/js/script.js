@@ -7,9 +7,11 @@ $(function(){
 		'Company',
 		'Location',
 		'Skills',
-		'Education',
-		'Years of experience',
-		'Job description'
+		// 'Education',
+		// 'Years of experience',
+		'Job description',
+		'Apply',
+		'Date submitted'
 	];
 	
 	$listings.append('<tr id="header-row"></tr>');
@@ -26,16 +28,22 @@ $(function(){
 			var jobsDataArray = JSON.parse(data);
 			for (var i=0; i<jobsDataArray.length; i++) {
 				var job = jobsDataArray[i];
-				var tdArray = [
+				var singleJobDataArray = [
 					job.jobTitle,
 					'<a href="'+job.companyURL+'" target="_blank">'+job.company+'</a>',
 					job.jobLocation,
 					job.skills,
-					job.education,
-					job.yearsExp,
-					job.jobDescription
+					// job.education,
+					// job.yearsExp,
+					job.jobDescription,
+					job.apply,
+					job.submitted
 				];
-				$listings.append()
+				var singleJobTDArray = singleJobDataArray.map(function(tdContent){
+					return '<td>'+tdContent+'</td>';
+				});
+
+				$listings.append('<tr>'+singleJobTDArray+'</td>');
 			}
 		}
 	)

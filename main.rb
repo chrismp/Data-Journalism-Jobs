@@ -18,10 +18,11 @@ get '/jobs' do
 	newGSheet = GSheet.new
 	newGSheet.sheetId = ENV['JOBS_GSHEET_ID']
 	jobListingDataArray = newGSheet.showData
+	# return jobListingDataArray.to_json
 	jobListingDataArray.each{|jobData|
 		g = 'gsx$'
 		t = '$t'
-
+		
 		if(jobData[g+'closed'][t].to_i===1 && jobData[g+'approved'][t].to_i!=1)
 			next
 		end
@@ -33,13 +34,14 @@ get '/jobs' do
 			# :skillsArray => jobData[g+'skillsrequired'][t].split(',').map{|skill| skill.strip},
 			:skills => jobData[g+'skillsrequired'][t],
 			:jobLocation => jobData[g+'location'][t],
-			:companyURL => jobData[g+'websiteurl'][t],
+			:companyURL => jobData[g+'companywebsiteurl'][t],
 			:apply => jobData[g+'howtoapply'][t],
-			:education => jobData[g+'minimumeducationrequired'][t],
-			:yearsExp => jobData[g+'minimumyearsofexperiencerequired'][t],
-			:internship => jobData[g+'isthisaninternship'][t],
+			# :education => jobData[g+'minimumeducationrequired'][t],
+			# :yearsExp => jobData[g+'minimumyearsofexperiencerequired'][t],
+			# :internship => jobData[g+'isthisaninternship'][t],
 			:closed => jobData[g+'closed'][t],
-			:approved => jobData[g+'approved'][t]
+			:approved => jobData[g+'approved'][t],
+			:submitted => jobData[g+'timestamp'][t].match(/.*(?=\s)/).to_s
 		}
 		returnArray << returnHash
 	}
