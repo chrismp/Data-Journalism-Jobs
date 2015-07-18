@@ -1,5 +1,5 @@
 # DataJournalismJobs.com
-[DataJournalismJobs.com](http://datajournalismjobs.com) is an open-source data journalism-related jobs listing.
+[DataJournalismJobs.com](http://datajournalismjobs.com) is an open-source data journalism jobs board.
 
 A user who want to post a new job to the listing must submit it through a Google Form. If approved, the job will appear on the site. 
 
