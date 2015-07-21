@@ -46,7 +46,7 @@ get '/jobs' do
 		returnArray << returnHash
 	}
 
-	returnJSON = returnArray.to_json
+	returnJSON = returnArray.reverse.to_json # Reverse array so jobs are ordered by submitted date, most recent first,
 	return returnJSON
 end
 
