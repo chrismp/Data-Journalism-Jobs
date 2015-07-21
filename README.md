@@ -12,8 +12,10 @@ Fork a branch to contribute to this project. If your changes are added to the si
 - Javascript
   - jQuery
   - Bootstrap
+  - Ridiculously Responsive Social Sharing Buttons
 - CSS
   - Bootstrap
-
+  - Ridiculously Responsive Social Sharing Buttons
+  
 # Credits
 - Created by [Chris Persaud](http://ChrisPersaud.com).
