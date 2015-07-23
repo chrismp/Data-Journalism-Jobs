@@ -2,3 +2,14 @@ h1,
 footer {
 	text-align: center;
 }
+
+#credits {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+@media screen and (min-width: 860px){
+	.rrssb-buttons li a {
+		height: unset; /* Without this, social buttons' heights will be equal to viewport's height */
+	}	
+}
