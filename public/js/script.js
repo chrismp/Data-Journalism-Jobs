@@ -28,6 +28,9 @@ $(function(){
 			var jobsDataArray = JSON.parse(data);
 			for (var i=0; i<jobsDataArray.length; i++) {
 				var job = jobsDataArray[i];
+				var apply = job.apply;
+				apply = validateEmail(apply)===true ? 'mailto:'+apply : apply;
+				
 				var singleJobDataArray = [
 					job.jobTitle,
 					'<a href="'+job.companyURL+'" target="_blank">'+job.company+'</a>',
@@ -36,7 +39,7 @@ $(function(){
 					// job.education,
 					// job.yearsExp,
 					job.jobDescription,
-					job.apply,
+					'<a href="'+apply+'" target="_blank">'+apply+'</a>',
 					job.submitted
 				];
 				var singleJobTDArray = singleJobDataArray.map(function(tdContent){
