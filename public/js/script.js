@@ -9,7 +9,7 @@ $(function(){
 		'Skills',
 		// 'Education',
 		// 'Years of experience',
-		'Job description',
+		'Details',
 		'Apply',
 		'Date submitted'
 	];
@@ -28,18 +28,18 @@ $(function(){
 			var jobsDataArray = JSON.parse(data);
 			for (var i=0; i<jobsDataArray.length; i++) {
 				var job = jobsDataArray[i];
-				var apply = job.apply;
-				apply = validateEmail(apply)===true ? 'mailto:'+apply : apply;
-				
+				var applyString = job.apply;
+				var applyHref = validateEmail(applyString)===true ? '"mailto:'+applyString+'"' : '"'+applyString+'" target="_blank"';
+				applyString = validateEmail(applyString)===true ? applyString : "Apply here";
 				var singleJobDataArray = [
 					job.jobTitle,
 					'<a href="'+job.companyURL+'" target="_blank">'+job.company+'</a>',
 					job.jobLocation,
-					job.skills,
+					job.skills.replace(/\,/g, ', '),
 					// job.education,
 					// job.yearsExp,
 					job.jobDescription,
-					'<a href="'+apply+'" target="_blank">'+apply+'</a>',
+					'<a href='+applyHref+'>'+applyString+'</a>',
 					job.submitted
 				];
 				var singleJobTDArray = singleJobDataArray.map(function(tdContent){
