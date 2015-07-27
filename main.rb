@@ -19,7 +19,7 @@ get '/jobs' do
 	newGSheet.sheetId = ENV['JOBS_GSHEET_ID']
 	jobListingDataArray = newGSheet.showData
 
-	jobListingDataArray.each{|jobData|
+	jobListingDataArray.each_with_index{|jobData,idx|
 		g = 'gsx$'
 		t = '$t'
 

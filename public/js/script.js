@@ -16,7 +16,7 @@ $(function(){
 	
 	$listings.append('<tr id="header-row"></tr>');
 	var $headerRow = $('#header-row');
-	
+
 	for (var i=0; i<headersArray.length; i++) {
 		var header = headersArray[i];
 		$headerRow.append('<th>'+header+'</th>');	
@@ -31,6 +31,8 @@ $(function(){
 				var applyString = job.apply;
 				var applyHref = validateEmail(applyString)===true ? '"mailto:'+applyString+'"' : '"'+applyString+'" target="_blank"';
 				applyString = validateEmail(applyString)===true ? applyString : "Apply here";
+				var jobDescription = job.jobDescription;
+				var jobDescriptionLite = jobDescription.match(/.*?\./);
 				var singleJobDataArray = [
 					job.jobTitle,
 					'<a href="'+job.companyURL+'" target="_blank">'+job.company+'</a>',
@@ -38,7 +40,9 @@ $(function(){
 					job.skills.replace(/\,/g, ', '),
 					// job.education,
 					// job.yearsExp,
-					job.jobDescription,
+					'<span class="job-description-wrapper">'+
+						jobDescriptionLite+' <a href="#" id="'+i+'" class="job-description-opener">More</a>'+
+					'</span>',
 					'<a href='+applyHref+'>'+applyString+'</a>',
 					job.submitted
 				];
@@ -47,7 +51,15 @@ $(function(){
 				});
 
 				$listings.append('<tr>'+singleJobTDArray+'</td>');
+
+				var jobDescriptionOpenerClicked = false;
+				$('#'+i).click(moreLessText(i, jobDescriptionOpenerClicked, jobDescriptionLite, jobDescription));
 			}
+	// $('.'+jobDescriptionOpener).each(
+	// 	function(i,obj){
+	// 		var 
+	// 	}
+	// );
 		}
-	)
+	);
 })
