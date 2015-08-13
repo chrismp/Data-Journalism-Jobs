@@ -34,7 +34,7 @@ $(function(){
 				var jobDescription = job.jobDescription;
 				var jobDescriptionLite = jobDescription.match(/.*?\./);
 				var singleJobDataArray = [
-					job.jobTitle,
+					'<a href="'+job.moreInfoURL+'" target="_blank">'+job.jobTitle+'</a>',
 					'<a href="'+job.companyURL+'" target="_blank">'+job.company+'</a>',
 					job.jobLocation,
 					job.skills.replace(/\,/g, ', '),

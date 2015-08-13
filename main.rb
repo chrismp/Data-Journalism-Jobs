@@ -29,6 +29,7 @@ get '/jobs' do
 
 		returnHash = {
 			:jobTitle => jobData[g+'jobtitle'][t],
+			:moreInfoURL => jobData[g+'moreinfourl'][t],
 			:company => jobData[g+'company'][t],
 			:jobDescription => jobData[g+'jobdescription'][t],
 			# :skillsArray => jobData[g+'skillsrequired'][t].split(',').map{|skill| skill.strip},
