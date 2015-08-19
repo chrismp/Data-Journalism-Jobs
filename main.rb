@@ -37,6 +37,7 @@ get '/jobs' do
 			:jobLocation => jobData[g+'location'][t],
 			:companyURL => jobData[g+'companywebsiteurl'][t],
 			:apply => jobData[g+'howtoapply'][t],
+			:pay => jobData[g+'whatsthepay'][t],
 			# :education => jobData[g+'minimumeducationrequired'][t],
 			# :yearsExp => jobData[g+'minimumyearsofexperiencerequired'][t],
 			# :internship => jobData[g+'isthisaninternship'][t],
