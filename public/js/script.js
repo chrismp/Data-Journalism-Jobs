@@ -26,6 +26,16 @@ $(function(){
 			for (var i=0; i<jobsDataArray.length; i++) {
 				var job = jobsDataArray[i];
 				var jobTitle = job.jobTitle;
+				var moreInfoURLHrefArray;
+
+				if(job.moreInfoURL===''){
+					moreInfoURLHrefArray = ['',''];
+				} else {
+					moreInfoURLHrefArray = [
+						'<a href="'+job.moreInfoURL+'" target="_blank">',
+						'</a>'
+					];
+				}
 
 				if(job.internship==='Yes, paid'){
 					jobTitle+=' <b>(Paid internship)</b>';
@@ -44,7 +54,7 @@ $(function(){
 				var jobDescription = job.jobDescription;
 				var jobDescriptionLite = jobDescription.match(/.*?\./);
 				var singleJobDataArray = [
-					'<a href="'+job.moreInfoURL+'" target="_blank">'+job.jobTitle+'</a>',
+					moreInfoURLHrefArray[0]+job.jobTitle+moreInfoURLHrefArray[1],
 					'<a href="'+job.companyURL+'" target="_blank">'+job.company+'</a>',
 					job.jobLocation,
 					salary,
