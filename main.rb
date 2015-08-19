@@ -23,12 +23,23 @@ get '/jobs' do
 		g = 'gsx$'
 		t = '$t'
 
+		deadlineString = jobData[g+'applicationdeadline'][t]
+		if(deadlineString!='')
+			deadlineDateTime = DateTime.strptime(deadlineString,'%m/%d/%Y %H:%M:%S')
+			now = DateTime.now
+		
+			if(deadlineDateTime>now===false)
+				next
+			end
+		end
+
 		if(jobData[g+'closed'][t].to_i!=0 || jobData[g+'approved'][t].to_i!=1)
 			next
 		end
 
 		returnHash = {
 			:jobTitle => jobData[g+'jobtitle'][t],
+			:moreInfoURL => jobData[g+'wherecanifindoutmoreaboutthisjob'][t],
 			:company => jobData[g+'company'][t],
 			:jobDescription => jobData[g+'jobdescription'][t],
 			:skills => jobData[g+'skillsrequired'][t],
@@ -36,6 +47,8 @@ get '/jobs' do
 			:partTime => jobData[g+'isthisfulltimeorparttimework'][t],
 			:companyURL => jobData[g+'companywebsiteurl'][t],
 			:apply => jobData[g+'howtoapply'][t],
+			:pay => jobData[g+'whatsthepay'][t],
+			:payPeriod => jobData[g+'isthatthepayrateperhourweekmonthoryear'][t],
 			:deadline => jobData[g+'applicationdeadline'][t],
 			:internship => jobData[g+'isthispositionaninternship'][t],
 			:closed => jobData[g+'closed'][t],

@@ -1,14 +1,11 @@
 $(function(){
-	// var tr = 'tr';
-	// var th = 'th';
 	var $listings = $('#listings');
 	var headersArray = [
 		'Job',
 		'Company',
 		'Location',
+		'Salary',
 		'Skills',
-		// 'Education',
-		// 'Years of experience',
 		'Details',
 		'Apply',
 		'Date submitted'
@@ -29,26 +26,39 @@ $(function(){
 			for (var i=0; i<jobsDataArray.length; i++) {
 				var job = jobsDataArray[i];
 				var jobTitle = job.jobTitle;
+				var moreInfoURLHrefArray;
+
+				if(job.moreInfoURL===''){
+					moreInfoURLHrefArray = ['',''];
+				} else {
+					moreInfoURLHrefArray = [
+						'<a href="'+job.moreInfoURL+'" target="_blank">',
+						'</a>'
+					];
+				}
+
 				if(job.internship==='Yes, paid'){
 					jobTitle+=' <b>(Paid internship)</b>';
 				} else if(job.internship==='Yes, unpaid'){
 					jobTitle+=' <b>(Unpaid internship)</b>';
 				}
+				
 				if(job.partTime==='Part time'){
 					jobTitle+=' <b>(Part time)</b>';
 				}
+
+				var salary = job.pay==='' ? '' : numeral(job.pay).format('$0,0')+'/'+job.payPeriod
 				var applyString = job.apply;
 				var applyHref = validateEmail(applyString)===true ? '"mailto:'+applyString+'"' : '"'+applyString+'" target="_blank"';
 				applyString = validateEmail(applyString)===true ? applyString : "Apply here";
 				var jobDescription = job.jobDescription;
 				var jobDescriptionLite = jobDescription.match(/.*?\./);
 				var singleJobDataArray = [
-					jobTitle,
+					moreInfoURLHrefArray[0]+job.jobTitle+moreInfoURLHrefArray[1],
 					'<a href="'+job.companyURL+'" target="_blank">'+job.company+'</a>',
 					job.jobLocation,
+					salary,
 					job.skills.replace(/\,/g, ', '),
-					// job.education,
-					// job.yearsExp,
 					'<span class="job-description-wrapper">'+
 						// jobDescriptionLite+' <a href="#" id="'+i+'" class="job-description-opener">More</a>'+
 						jobDescription+
