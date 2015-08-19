@@ -4,6 +4,7 @@ $(function(){
 		'Job',
 		'Company',
 		'Location',
+		'Salary',
 		'Skills',
 		'Details',
 		'Apply',
@@ -25,14 +26,18 @@ $(function(){
 			for (var i=0; i<jobsDataArray.length; i++) {
 				var job = jobsDataArray[i];
 				var jobTitle = job.jobTitle;
+
 				if(job.internship==='Yes, paid'){
 					jobTitle+=' <b>(Paid internship)</b>';
 				} else if(job.internship==='Yes, unpaid'){
 					jobTitle+=' <b>(Unpaid internship)</b>';
 				}
+				
 				if(job.partTime==='Part time'){
 					jobTitle+=' <b>(Part time)</b>';
 				}
+
+				var salary = job.pay==='' ? '' : numeral(job.pay).format('$0,0')+'/'+job.payPeriod
 				var applyString = job.apply;
 				var applyHref = validateEmail(applyString)===true ? '"mailto:'+applyString+'"' : '"'+applyString+'" target="_blank"';
 				applyString = validateEmail(applyString)===true ? applyString : "Apply here";
@@ -42,6 +47,7 @@ $(function(){
 					'<a href="'+job.moreInfoURL+'" target="_blank">'+job.jobTitle+'</a>',
 					'<a href="'+job.companyURL+'" target="_blank">'+job.company+'</a>',
 					job.jobLocation,
+					salary,
 					job.skills.replace(/\,/g, ', '),
 					'<span class="job-description-wrapper">'+
 						// jobDescriptionLite+' <a href="#" id="'+i+'" class="job-description-opener">More</a>'+

@@ -29,7 +29,7 @@ get '/jobs' do
 
 		returnHash = {
 			:jobTitle => jobData[g+'jobtitle'][t],
-			:moreInfoURL => jobData[g+'moreinfourl'][t],
+			:moreInfoURL => jobData[g+'wherecanifindoutmoreaboutthisjob'][t],
 			:company => jobData[g+'company'][t],
 			:jobDescription => jobData[g+'jobdescription'][t],
 			:skills => jobData[g+'skillsrequired'][t],
@@ -38,6 +38,7 @@ get '/jobs' do
 			:companyURL => jobData[g+'companywebsiteurl'][t],
 			:apply => jobData[g+'howtoapply'][t],
 			:pay => jobData[g+'whatsthepay'][t],
+			:payPeriod => jobData[g+'isthatthepayrateperhourweekmonthoryear'][t],
 			:deadline => jobData[g+'applicationdeadline'][t],
 			:internship => jobData[g+'isthispositionaninternship'][t],
 			:closed => jobData[g+'closed'][t],
