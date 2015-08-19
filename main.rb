@@ -23,6 +23,16 @@ get '/jobs' do
 		g = 'gsx$'
 		t = '$t'
 
+		deadlineString = jobData[g+'applicationdeadline'][t]
+		if(deadlineString!='')
+			deadlineDateTime = DateTime.strptime(deadlineString,'%m/%d/%Y %H:%M:%S')
+			now = DateTime.now
+		
+			if(deadlineDateTime>now===false)
+				next
+			end
+		end
+
 		if(jobData[g+'closed'][t].to_i!=0 || jobData[g+'approved'][t].to_i!=1)
 			next
 		end
