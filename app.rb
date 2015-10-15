@@ -7,7 +7,12 @@
 	require g
 }
 
-require_relative 'models/classes.rb'
+[
+	'models/classes',
+	'helpers/methods'
+].each{|rb|
+	require_relative rb+'.rb'
+}
 
 get '/' do 
 	erb :index
@@ -39,13 +44,13 @@ get '/jobs' do
 
 		returnHash = {
 			:jobTitle => jobData[g+'jobtitle'][t],
-			:moreInfoURL => jobData[g+'wherecanifindoutmoreaboutthisjob'][t],
+			:moreInfoURL => addHTTP(jobData[g+'wherecanifindoutmoreaboutthisjob'][t][0..3]),
 			:company => jobData[g+'company'][t],
 			:jobDescription => jobData[g+'jobdescription'][t],
 			:skills => jobData[g+'skillsrequired'][t],
 			:jobLocation => jobData[g+'location'][t],
 			:partTime => jobData[g+'isthisfulltimeorparttimework'][t],
-			:companyURL => jobData[g+'companywebsiteurl'][t],
+			:companyURL => addHTTP(jobData[g+'companywebsiteurl'][t]),
 			:apply => jobData[g+'howtoapply'][t],
 			:pay => jobData[g+'whatsthepay'][t],
 			:payPeriod => jobData[g+'isthatthepayrateperhourweekmonthoryear'][t],
