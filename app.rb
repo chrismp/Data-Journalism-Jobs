@@ -44,7 +44,7 @@ get '/jobs' do
 
 		returnHash = {
 			:jobTitle => jobData[g+'jobtitle'][t],
-			:moreInfoURL => addHTTP(jobData[g+'wherecanifindoutmoreaboutthisjob'][t][0..3]),
+			:moreInfoURL => addHTTP(jobData[g+'wherecanifindoutmoreaboutthisjob'][t]),
 			:company => jobData[g+'company'][t],
 			:jobDescription => jobData[g+'jobdescription'][t],
 			:skills => jobData[g+'skillsrequired'][t],
