@@ -1,5 +1,3 @@
 def addHTTP(str)
-	if(str.length>0) 
-		return (str.downcase[0..3]==='http') ? str : 'http://'+str 
-	end
+	(str.length>0)  ?  return (str.downcase[0..3]==='http') ? str : 'http://'+str  :  return nil
 end
