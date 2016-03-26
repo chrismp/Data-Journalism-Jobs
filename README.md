@@ -9,7 +9,7 @@ Fork a branch to contribute to this project.  Send a pull request to the `develo
 If your changes are added to the site, you'll get credit on its front page and in this README.
 
 # Jobs listing spreadsheet
-Click [here](https://docs.google.com/spreadsheets/d/1A_SHZ8TGIZ3AMvurohiPLSB5biySZUFOqo9dOdWPofk/edit?usp=sharing) for a copy of the Google Sheet doc from which DataJournalismJobs.com get its job ads.
+Click [here](https://docs.google.com/spreadsheets/d/1A_SHZ8TGIZ3AMvurohiPLSB5biySZUFOqo9dOdWPofk) for a copy of the Google Sheet doc from which DataJournalismJobs.com get its job ads.
 
 # Programming languages and libraries used
 - Ruby 
